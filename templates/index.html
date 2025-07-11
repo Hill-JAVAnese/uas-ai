@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosis Penyakit Manusia</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7f6; 
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+        .container {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+        .card {
+            border-radius: 12px; 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+            border: none;
+        }
+        .card-header {
+            background: linear-gradient(to right, #007bff, #0056b3); /* Gradien biru */
+            color: white;
+            border-bottom: none;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            padding: 1.5rem 2rem;
+            font-size: 1.75rem; 
+            font-weight: 600;
+        }
+        .btn-diagnosa { 
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-diagnosa:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-reset { 
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: white;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-reset:hover {
+            background-color: #545b62;
+            border-color: #545b62;
+        }
+        .form-label {
+            font-weight: 500; 
+            color: #495057;
+            margin-bottom: 0.5rem;
+        }
+        .form-select {
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+        }
+        .alert-info {
+            background-color: #e6f7ff;
+            border-color: #91d5ff;
+            color: #004085;
+            border-radius: 8px;
+        }
+        .alert-info .alert-heading {
+            color: inherit;
+        }
+        .alert-warning {
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+            color: #856404;
+            border-radius: 8px;
+        }
+        .alert-warning .alert-heading {
+            color: inherit;
+        }
+        .list-group-item strong {
+            color: #0056b3; 
+        }
+        .symptom-selector {
+            margin-bottom: 1.5rem; 
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-center">
+                 🩺 Sistem Diagnosa Penyakit (Manusia) 🩺
+            </div>
+            <div class="card-body p-4 p-md-5">
+                <p class="text-muted text-center mb-4">
+                    Pilih hingga 3 gejala utama yang Anda rasakan untuk mendapatkan kemungkinan diagnosa.
+                </p>
+                
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-4 symptom-selector">
+                            <label for="input_gejala_1" class="form-label">Gejala Utama 1</label>
+                            <select name="input_gejala_1" id="input_gejala_1" class="form-select" required>
+                                <option value="">-- Pilih Gejala --</option>
+                                {% for option_text, option_value in gejala_options.items() %}
+                                    {% if option_value %} 
+                                    <option value="{{ option_value }}">{{ option_text }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4 symptom-selector">
+                            <label for="input_gejala_2" class="form-label">Gejala Utama 2 (Opsional)</label>
+                            <select name="input_gejala_2" id="input_gejala_2" class="form-select">
+                                <option value="">-- Pilih Gejala --</option>
+                                {% for option_text, option_value in gejala_options.items() %}
+                                    <option value="{{ option_value }}">{{ option_text }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4 symptom-selector">
+                            <label for="input_gejala_3" class="form-label">Gejala Utama 3 (Opsional)</label>
+                            <select name="input_gejala_3" id="input_gejala_3" class="form-select">
+                                <option value="">-- Pilih Gejala --</option>
+                                {% for option_text, option_value in gejala_options.items() %}
+                                    <option value="{{ option_value }}">{{ option_text }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-2 mb-md-0 d-grid">
+                            <button type="submit" class="btn btn-diagnosa">Diagnosa Penyakit</button>
+                        </div>
+                        <div class="col-md-6 d-grid">
+                             <button type="reset" class="btn btn-reset" onclick="window.location.href='/'">Reset Form</button>
+                        </div>
+                    </div>
+                </form>
+
+                {% if form_submitted %}
+                    <div class="mt-5">
+                        <h5>Gejala yang Anda Pilih:</h5>
+                        {% if selected_symptoms_for_display %}
+                            <ul class="list-group mb-4 shadow-sm">
+                                {% for item in selected_symptoms_for_display %}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ item.value }}
+                                        <span class="badge bg-primary rounded-pill">Dipilih</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                             <p class="text-muted fst-italic">Anda belum memilih gejala apapun.</p>
+                        {% endif %}
+                    </div>
+
+                    {% if hasil_diagnosis %}
+                        <div class="alert alert-info mt-4">
+                            <h5 class="alert-heading fw-bold">🔍 Hasil Kemungkinan Diagnosa:</h5>
+                            <p>Berdasarkan gejala yang Anda masukkan, berikut adalah beberapa kemungkinan penyakit. 
+                               <strong>Ini BUKAN diagnosis medis pasti.</strong>
+                            </p>
+                            <hr>
+                            <ul class="list-group list-group-flush">
+                                {% for h in hasil_diagnosis %}
+                                    <li class="list-group-item bg-transparent px-0">
+                                        <strong class="d-block fs-5">{{ h.penyakit }}</strong>
+                                        <span class="text-muted">Saran Penanganan Umum:</span> {{ h.penanganan }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <hr>
+                            <p class="mb-0 fw-bold">
+                                Sangat disarankan untuk berkonsultasi dengan dokter atau tenaga medis profesional 
+                                untuk diagnosis yang akurat dan penanganan yang tepat.
+                            </p>
+                        </div>
+                    {% elif form_submitted and not selected_symptoms_for_display %}
+                        {# Tidak ada output khusus jika form disubmit tanpa gejala #}
+                    {% elif form_submitted %}
+                        <div class="alert alert-warning mt-4" role="alert">
+                            <h5 class="alert-heading fw-bold">⚠️ Tidak Ditemukan Penyakit yang Cocok</h5>
+                            Mohon maaf, tidak ditemukan penyakit yang cocok dengan kombinasi gejala yang Anda pilih dalam basis data kami.
+                            Silakan periksa kembali input Anda atau konsultasikan langsung dengan dokter.
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="card-footer text-center text-muted small py-3">
+                Sistem Pakar Sederhana &copy; 2024. Hanya untuk tujuan demonstrasi dan edukasi.
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

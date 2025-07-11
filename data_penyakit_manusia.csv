@@ -1,0 +1,17 @@
+Gejala1,Gejala2,Gejala3,KemungkinanPenyakit,PenangananUmum
+Demam,Batuk,Pilek,Influenza (Flu),Istirahat yang cukup, minum banyak air, konsumsi obat pereda gejala (jika perlu), hindari kontak dengan orang lain.
+Demam,Batuk,Sakit Tenggorokan,ISPA (Infeksi Saluran Pernapasan Akut),Istirahat, minum air hangat, kumur air garam, konsumsi pelega tenggorokan.
+Demam,Sakit Kepala,Nyeri Otot,Demam Berdarah Dengue (DBD) - Fase Awal,Segera ke fasilitas kesehatan untuk pemeriksaan lebih lanjut, banyak minum untuk mencegah dehidrasi, istirahat total.
+Demam,Muncul Bintik Merah,Nyeri Sendi,Demam Berdarah Dengue (DBD) - Fase Lanjut,Perawatan intensif di rumah sakit, pantau trombosit dan hematokrit, waspada tanda syok.
+Mual,Muntah,Diare,Keracunan Makanan / Gastroenteritis,Minum larutan oralit untuk mengganti cairan, hindari makanan padat sementara, istirahat. Jika parah atau berlanjut, segera ke dokter.
+Mual,Sakit Perut,Kembung,Maag / Dispepsia,Hindari makanan pedas, asam, dan berlemak. Makan porsi kecil tapi sering. Konsumsi antasida jika perlu.
+Pusing,Lemas,Kembung,"Masuk Angin" (Indisposisi Umum),Istirahat, minum air hangat (jahe), kerokan (jika biasa melakukan dan merasa nyaman), hindari paparan angin langsung.
+Demam,Sakit Kepala,Lemas,Tifus (Demam Tifoid) - Fase Awal,Segera ke dokter untuk diagnosis dan antibiotik, istirahat total, diet lunak dan mudah dicerna.
+Demam,Nyeri Sendi,Ruam Kulit,Chikungunya,Istirahat, kompres dingin pada sendi yang nyeri, minum obat pereda nyeri (parasetamol), cukupi kebutuhan cairan.
+Batuk,Sesak Napas,Demam,Pneumonia / Radang Paru,Segera ke dokter untuk pemeriksaan dan antibiotik, istirahat, terapi oksigen jika diperlukan, banyak minum.
+Ruam Kulit,Gatal,,Alergi Kulit / Dermatitis Kontak,Hindari pemicu alergi/iritan, gunakan krim atau salep antihistamin/kortikosteroid ringan sesuai anjuran dokter, jaga kebersihan kulit.
+Sakit Tenggorokan,Demam,,Radang Tenggorokan (Faringitis/Tonsilitis),Minum air hangat, kumur antiseptik atau air garam, hindari makanan iritatif, istirahat. Jika bakteri, perlu antibiotik dari dokter.
+Demam,Muncul Bintik Merah,Gatal,Cacar Air (Varicella),Istirahat, mandi dengan larutan antiseptik ringan, gunakan bedak atau losion antigatal, hindari menggaruk untuk mencegah infeksi sekunder.
+Sakit Kepala,Pusing,Mual,Vertigo / Migrain,Istirahat di tempat tenang dan gelap, hindari gerakan kepala tiba-tiba, minum obat pereda nyeri atau antimual jika perlu. Konsultasi dokter jika sering kambuh.
+Demam,Menggigil,Nyeri Otot,Malaria (jika di daerah endemis),Segera lakukan pemeriksaan darah di fasilitas kesehatan, pengobatan antimalaria sesuai jenis parasit.
+Batuk,Pilek,,Common Cold (Selesma),Istirahat, banyak minum air hangat, konsumsi madu atau pelega tenggorokan, hirup uap air hangat.
